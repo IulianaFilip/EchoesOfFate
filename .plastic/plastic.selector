@@ -1,0 +1,4 @@
+repository "EchoesOfFate/EchoesOfFate@7972460452999@cloud"
+  path "/"
+    br "/main"
+    co "/main"

@@ -33,11 +33,11 @@ public class DoorController : MonoBehaviour
         if (doorGameObject != null)
         {
             doorGameObject.SetActive(false); // Make the door disappear (or play an animation)
-            Debug.Log("Door Controller: Door opened in response to puzzle solved.");
+            UnityEngine.Debug.Log("Door Controller: Door opened in response to puzzle solved.");
         }
         else
         {
-            Debug.LogWarning("Door Controller: No doorGameObject assigned to open!", this);
+            UnityEngine.Debug.LogWarning("Door Controller: No doorGameObject assigned to open!", this);
         }
     }
 
@@ -46,7 +46,7 @@ public class DoorController : MonoBehaviour
         if (doorGameObject != null)
         {
             doorGameObject.SetActive(true); // Make the door reappear
-            Debug.Log("Door Controller: Door closed.");
+            UnityEngine.Debug.Log("Door Controller: Door closed.");
         }
     }
 }

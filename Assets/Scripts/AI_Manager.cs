@@ -48,7 +48,7 @@ public class AI_Manager : MonoBehaviour
         failedPuzzles = PlayerPrefs.GetInt(PUZZLE_FAILURE_KEY, 0);
         currentPuzzleComplexity = PlayerPrefs.GetInt(CURRENT_PUZZLE_COMPLEXITY_KEY, 3); // Default complexity
         currentNPCChallengeLevel = PlayerPrefs.GetInt(NPC_CHALLENGE_KEY, 1); // Default NPC challenge
-        Debug.Log($"AI_Manager Loaded: Success={successfulPuzzles}, Failed={failedPuzzles}, Complexity={currentPuzzleComplexity}, NPC Challenge={currentNPCChallengeLevel}");
+        UnityEngine.Debug.Log($"AI_Manager Loaded: Success={successfulPuzzles}, Failed={failedPuzzles}, Complexity={currentPuzzleComplexity}, NPC Challenge={currentNPCChallengeLevel}");
     }
 
     // Saves game-related data to PlayerPrefs.
@@ -59,7 +59,7 @@ public class AI_Manager : MonoBehaviour
         PlayerPrefs.SetInt(CURRENT_PUZZLE_COMPLEXITY_KEY, currentPuzzleComplexity);
         PlayerPrefs.SetInt(NPC_CHALLENGE_KEY, currentNPCChallengeLevel);
         PlayerPrefs.Save(); // Ensure data is written to disk
-        Debug.Log("AI_Manager Data Saved.");
+        UnityEngine.Debug.Log("AI_Manager Data Saved.");
     }
 
     // Records the outcome of a puzzle attempt.
@@ -68,12 +68,12 @@ public class AI_Manager : MonoBehaviour
         if (success)
         {
             successfulPuzzles++;
-            Debug.Log($"Puzzle Solved! Total Successes: {successfulPuzzles}");
+            UnityEngine.Debug.Log($"Puzzle Solved! Total Successes: {successfulPuzzles}");
         }
         else
         {
             failedPuzzles++;
-            Debug.Log($"Puzzle Failed! Total Failures: {failedPuzzles}");
+            UnityEngine.Debug.Log($"Puzzle Failed! Total Failures: {failedPuzzles}");
         }
         SaveGameData(); // Save data after recording
         AdjustPuzzleDifficulty(); // Adjust difficulty based on new data
@@ -91,7 +91,7 @@ public class AI_Manager : MonoBehaviour
         if (netPerformance > 3 && currentPuzzleComplexity < 5) // If significantly more successes
         {
             currentPuzzleComplexity++;
-            Debug.Log($"Increasing puzzle complexity to: {currentPuzzleComplexity}");
+            UnityEngine.Debug.Log($"Increasing puzzle complexity to: {currentPuzzleComplexity}");
             // Reset counters to make future adjustments more sensitive
             successfulPuzzles = 0;
             failedPuzzles = 0;
@@ -99,7 +99,7 @@ public class AI_Manager : MonoBehaviour
         else if (netPerformance < -2 && currentPuzzleComplexity > 1) // If significantly more failures
         {
             currentPuzzleComplexity--;
-            Debug.Log($"Decreasing puzzle complexity to: {currentPuzzleComplexity}");
+            UnityEngine.Debug.Log($"Decreasing puzzle complexity to: {currentPuzzleComplexity}");
             // Reset counters
             successfulPuzzles = 0;
             failedPuzzles = 0;
@@ -121,7 +121,7 @@ public class AI_Manager : MonoBehaviour
     {
         currentNPCChallengeLevel = Mathf.Clamp(currentNPCChallengeLevel + adjustment, 1, 10); // Clamp between 1 and 10
         SaveGameData();
-        Debug.Log($"NPC Challenge adjusted to: {currentNPCChallengeLevel}");
+        UnityEngine.Debug.Log($"NPC Challenge adjusted to: {currentNPCChallengeLevel}");
         // NPCs would then query this level to adjust their patrol speed, attack strength, etc.
     }
 
@@ -140,7 +140,7 @@ public class AI_Manager : MonoBehaviour
         PlayerPrefs.DeleteKey(NPC_CHALLENGE_KEY);
         PlayerPrefs.Save();
         LoadGameData(); // Reload defaults
-        Debug.Log("AI_Manager data cleared.");
+        UnityEngine.Debug.Log("AI_Manager data cleared.");
     }
 }
 

@@ -29,7 +29,7 @@ public class RotatingTile : MonoBehaviour
         tileRenderer = GetComponent<Renderer>();
         if (tileRenderer == null)
         {
-            Debug.LogError("RotatingTile: No Renderer found on this GameObject.", this);
+            UnityEngine.Debug.LogError("RotatingTile: No Renderer found on this GameObject.", this);
         }
         UpdateTileState(); // Initialize the visual state
     }

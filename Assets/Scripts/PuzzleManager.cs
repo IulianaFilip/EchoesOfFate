@@ -54,8 +54,8 @@ public class PuzzleManager : MonoBehaviour
     {
         isPuzzleSolved = false;
         currentCorrectTiles = 0;
-   
-        Debug.Log($"Puzzle Initialized. Complexity Level: {AI_Manager.Instance.GetCurrentPuzzleComplexity()}");
+
+        UnityEngine.Debug.Log($"Puzzle Initialized. Complexity Level: {AI_Manager.Instance.GetCurrentPuzzleComplexity()}");
     }
 
     public void CheckPuzzleSolved()
@@ -74,14 +74,14 @@ public class PuzzleManager : MonoBehaviour
         // Check if all required tiles are correct
         if (currentCorrectTiles >= requiredCorrectTiles)
         {
-            Debug.Log("Puzzle Solved!");
+            UnityEngine.Debug.Log("Puzzle Solved!");
             isPuzzleSolved = true;
             OnPuzzleSolved?.Invoke(); // Trigger the puzzle solved event
             AI_Manager.Instance?.RecordPuzzleOutcome(true); // Inform AI Manager of success
         }
         else
         {
-            Debug.Log($"Puzzle Progress: {currentCorrectTiles}/{requiredCorrectTiles} correct tiles.");
+            UnityEngine.Debug.Log($"Puzzle Progress: {currentCorrectTiles}/{requiredCorrectTiles} correct tiles.");
           
         }
     }
@@ -91,7 +91,7 @@ public class PuzzleManager : MonoBehaviour
     {
         if (!isPuzzleSolved)
         {
-            Debug.Log("Puzzle Failed!");
+            UnityEngine.Debug.Log("Puzzle Failed!");
             AI_Manager.Instance?.RecordPuzzleOutcome(false); // Inform AI Manager of failure
         }
     }

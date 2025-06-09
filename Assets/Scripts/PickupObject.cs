@@ -65,11 +65,11 @@ public class PickupObject : MonoBehaviour
                     // Reset local position and rotation relative to the hold position
                     heldObject.transform.localPosition = Vector3.zero;
                     heldObject.transform.localRotation = Quaternion.identity; // No local rotation
-                    Debug.Log($"Picked up: {heldObject.name}");
+                    UnityEngine.Debug.Log($"Picked up: {heldObject.name}");
                 }
                 else
                 {
-                    Debug.LogWarning($"Object '{heldObject.name}' tagged 'Pickup' but has no Rigidbody!", heldObject);
+                    UnityEngine.Debug.LogWarning($"Object '{heldObject.name}' tagged 'Pickup' but has no Rigidbody!", heldObject);
                     heldObject = null; // Don't hold if no Rigidbody
                 }
             }
@@ -90,7 +90,7 @@ public class PickupObject : MonoBehaviour
             // Apply a small forward force to "throw" the object if desired
             // heldObjectRigidbody.AddForce(Camera.main.transform.forward * 5f, ForceMode.Impulse);
 
-            Debug.Log($"Dropped: {heldObject.name}");
+            UnityEngine.Debug.Log($"Dropped: {heldObject.name}");
             heldObject = null;
             heldObjectRigidbody = null;
         }

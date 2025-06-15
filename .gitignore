@@ -25,7 +25,7 @@ sysinfo.txt
 *.shader
 *.cginc
 *.jpg
-*.unity
+
 *.psd
 *.mat
 # OS-generated files
